@@ -13,16 +13,16 @@
       color: #fff;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
       height: 100vh;
-      overflow: hidden; /* brak scrolla */
-      backdrop-filter: blur(0px);
+      overflow: hidden;
+      perspective: 1000px;
     }
 
     header {
       width: 100%;
-      padding: 60px 20px;
+      padding: 40px 20px 20px 20px;
       text-align: center;
     }
 
@@ -35,7 +35,7 @@
     header p {
       font-size: 1.2em;
       color: #ccc;
-      margin-bottom: 30px;
+      margin-bottom: 20px;
     }
 
     .buttons {
@@ -74,7 +74,7 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      gap: 40px;
+      gap: 30px;
     }
 
     .card {
@@ -101,13 +101,12 @@
       line-height: 1.5;
     }
 
-    footer {
-      width: 100%;
-      padding: 30px 20px;
+    .search-container {
       display: flex;
       justify-content: center;
-      background: rgba(0,0,0,0.15);
-      backdrop-filter: blur(15px);
+      margin-top: 0;
+      gap: 10px;
+      width: 100%;
     }
 
     input[type="text"] {
@@ -137,7 +136,7 @@
 
   <header>
     <h1>AuralOS</h1>
-    <p>iOS 26 Vibe UI — płynny, futurystyczny, bez scrolla</p>
+    <p>iOS 26 Vibe UI — płynny, futurystyczny, brak scrolla</p>
     <div class="buttons">
       <a href="https://AuralOS.github.io/we" class="btn">My, O nas</a>
       <a href="https://t.me/Auralinfo" class="btn">Nasz Telegram</a>
@@ -149,14 +148,14 @@
       <h2>Witaj w AuralOS</h2>
       <p>Płynne interfejsy, efekty liquid glass, futurystyczny wygląd w stylu iOS 26.</p>
     </div>
-  </main>
 
-  <footer>
-    <form id="searchForm" onsubmit="return handleSearch(event)">
-      <input type="text" id="searchInput" placeholder="Wpisz coś... np. YouTube">
-      <button type="submit">Szukaj</button>
-    </form>
-  </footer>
+    <div class="search-container">
+      <form id="searchForm" onsubmit="return handleSearch(event)">
+        <input type="text" id="searchInput" placeholder="Wpisz coś... np. YouTube">
+        <button type="submit">Szukaj</button>
+      </form>
+    </div>
+  </main>
 
   <script>
     function handleSearch(e) {
@@ -169,7 +168,6 @@
       }
     }
 
-    // Efekt hover na karty (lekkie ruchy jak iOS 26)
     const card = document.querySelector('.card');
     document.addEventListener('mousemove', e => {
       const x = (e.clientX / window.innerWidth - 0.5) * 10;
