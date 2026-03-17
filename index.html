@@ -70,7 +70,7 @@ body {
   box-shadow: 0 0 20px rgba(120,120,255,0.6);
 }
 
-/* Center text */
+/* Center title */
 .center {
   position: absolute;
   top: 35%;
@@ -84,16 +84,16 @@ body {
   text-align: center;
 }
 
-/* Bottom buttons */
+/* Bottom buttons container */
 .bottom-buttons {
-  position: absolute;
-  bottom: 80px;
+  position: fixed;
+  bottom: 40px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
   gap: 15px;
-  flex-wrap: wrap;
   justify-content: center;
+  flex-wrap: wrap;
 }
 </style>
 </head>
@@ -131,6 +131,7 @@ function handleSearch(e) {
   }
 }
 
+/* Typing animation */
 function typingEffect() {
   const input = document.getElementById("searchInput");
   input.classList.add("typing");
