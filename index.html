@@ -14,7 +14,7 @@ body {
   color: white;
 }
 
-/* iOS 26 Glass Topbar */
+/* Topbar liquid glass */
 .topbar {
   position: fixed;
   top: 25px;
@@ -24,7 +24,6 @@ body {
   gap: 10px;
   padding: 10px 14px;
   border-radius: 22px;
-
   background: rgba(255,255,255,0.06);
   backdrop-filter: blur(35px) saturate(180%);
   -webkit-backdrop-filter: blur(35px) saturate(180%);
@@ -48,7 +47,7 @@ body {
   transform: scale(1.06);
 }
 
-/* Search */
+/* Search input */
 .search {
   width: 260px;
   padding: 10px 14px;
@@ -61,14 +60,12 @@ body {
   transition: all 0.25s ease;
 }
 
-/* Focus iOS glow */
 .search:focus {
   background: rgba(255,255,255,0.15);
   box-shadow: 0 0 25px rgba(120,120,255,0.3);
   transform: scale(1.02);
 }
 
-/* Typing glow */
 .search.typing {
   box-shadow: 0 0 20px rgba(120,120,255,0.6);
 }
@@ -76,7 +73,7 @@ body {
 /* Center text */
 .center {
   position: absolute;
-  top: 50%;
+  top: 35%;
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 50px;
@@ -84,19 +81,41 @@ body {
   opacity: 0.85;
   letter-spacing: 2px;
   text-shadow: 0 0 20px rgba(255,255,255,0.1);
+  text-align: center;
+}
+
+/* Bottom buttons */
+.bottom-buttons {
+  position: absolute;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 </style>
 </head>
 <body>
 
+<!-- Topbar -->
 <div class="topbar">
   <button class="btn" onclick="goCanoe()">Canoe Web</button>
   <input class="search" id="searchInput" placeholder="Szukaj..." 
-    onkeydown="handleSearch(event)" 
-    oninput="typingEffect()">
+         onkeydown="handleSearch(event)" 
+         oninput="typingEffect()">
 </div>
 
+<!-- Center title -->
 <div class="center">AuralOS</div>
+
+<!-- Bottom buttons -->
+<div class="bottom-buttons">
+  <button class="btn" onclick="window.location.href='https://www.apple.com/iphone/'">Kup Auralfon</button>
+  <button class="btn" onclick="window.location.href='https://t.me/Auralinfo'">Telegram</button>
+  <button class="btn" onclick="window.location.href='https://auralos.github.io/we'">O nas</button>
+</div>
 
 <script>
 function goCanoe() {
@@ -104,22 +123,14 @@ function goCanoe() {
 }
 
 function handleSearch(e) {
-  if (e.key === "Enter") {
-    const input = document.getElementById("searchInput").value.toLowerCase().trim();
-    switch(input) {
-      case "youtube": window.location.href = "https://youtube.com"; break;
-      case "chatgpt": window.location.href = "https://chatgpt.com"; break;
-      case "telegram": window.location.href = "https://telegram.org"; break;
-      case "spotify": window.location.href = "https://spotify.com"; break;
-      case "facebook": window.location.href = "https://facebook.com"; break;
-      case "google": window.location.href = "https://google.com"; break;
-      case "canoe": window.location.href = "https://auralos.github.io/canoe"; break;
-      default: window.location.href = "https://www.google.com/search?q=" + encodeURIComponent(input); break;
+  if(e.key === "Enter") {
+    const query = document.getElementById("searchInput").value.trim();
+    if(query) {
+      window.location.href = "https://www.google.com/search?q=" + encodeURIComponent(query);
     }
   }
 }
 
-/* Typing animation */
 function typingEffect() {
   const input = document.getElementById("searchInput");
   input.classList.add("typing");
