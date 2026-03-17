@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AuralOS Search</title>
+<title>Canoe Web</title>
 <style>
 body {
   margin: 0;
@@ -73,27 +73,43 @@ body {
 /* Center text */
 .center {
   position: absolute;
-  top: 50%;
+  top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.center h1 {
   font-size: 50px;
   font-weight: 600;
   opacity: 0.85;
   letter-spacing: 2px;
   text-shadow: 0 0 20px rgba(255,255,255,0.1);
+  margin: 0;
+}
+
+.center p {
+  font-size: 16px;
+  opacity: 0.6;
+  margin-top: 8px;
 }
 </style>
 </head>
 <body>
 
+<!-- Topbar -->
 <div class="topbar">
   <button class="btn" onclick="goHome()">Home</button>
-  <input class="search" id="searchInput" placeholder="Szukaj w Google..." 
+  <input class="search" id="searchInput" placeholder="Szukaj..." 
          onkeydown="handleSearch(event)" 
          oninput="typingEffect()">
 </div>
 
-<div class="center">AuralOS</div>
+<!-- Center text -->
+<div class="center">
+  <h1>Canoe Web</h1>
+  <p>by Aural</p>
+</div>
 
 <script>
 function goHome() {
@@ -109,6 +125,7 @@ function handleSearch(e) {
   }
 }
 
+/* Typing animation */
 function typingEffect() {
   const input = document.getElementById("searchInput");
   input.classList.add("typing");
