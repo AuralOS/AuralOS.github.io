@@ -11,7 +11,6 @@ body {
   background: radial-gradient(circle at top, #1f2937, #020617 70%);
   color: white;
   overflow-x: hidden;
-  height: 100vh;
 }
 
 /* Topbar */
@@ -66,7 +65,17 @@ body {
   margin-right: auto;
 }
 
-/* Bottom floating container (przycisk + wyszukiwarka) */
+.card {
+  background: rgba(255,255,255,0.05);
+  padding: 15px 20px;
+  margin-bottom: 15px;
+  border-radius: 18px;
+  backdrop-filter: blur(15px) saturate(180%);
+  -webkit-backdrop-filter: blur(15px) saturate(180%);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3) inset;
+}
+
+/* Bottom floating container (button + search) */
 .bottom-floating {
   position: absolute; /* pozwala na przesuwanie przy scrollu */
   left: 50%;
@@ -78,7 +87,6 @@ body {
   transition: transform 0.15s ease, filter 0.15s ease;
 }
 
-/* Canoe Web button (liquid glass iOS 26) */
 .canoe-btn {
   height: 45px;
   padding: 0 16px;
@@ -88,7 +96,6 @@ body {
   color: white;
   font-size: 15px;
   font-weight: 500;
-  letter-spacing: 0.5px;
   cursor: pointer;
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
@@ -100,7 +107,6 @@ body {
   transform: scale(1.05);
 }
 
-/* Search input */
 .search {
   flex: 1;
   height: 45px;
@@ -138,21 +144,21 @@ body.scrolling .bottom-floating {
 
 <!-- Main content -->
 <div class="content">
-  <p>1. AuralOS jest najszybszym systemem operacyjnym dla każdego użytkownika.</p>
-  <p>2. Nasze terminale płatnicze działają błyskawicznie i bezawaryjnie.</p>
-  <p>3. System jest kompatybilny z najnowszymi procesorami.</p>
-  <p>4. Intuicyjny interfejs przypomina iOS, ale daje więcej kontroli.</p>
-  <p>5. Aktualizacje AuralOS są automatyczne i regularne.</p>
-  <p>6. Wbudowane narzędzia developerskie przyspieszają tworzenie aplikacji.</p>
-  <p>7. Tryb ciemny i jasny dostosowuje się automatycznie do światła.</p>
-  <p>8. AuralOS wspiera wiele języków i lokalizacji.</p>
-  <p>9. Nasza społeczność jest aktywna i pomocna.</p>
-  <p>10. Terminale płatnicze obsługują NFC i szyfrowanie end-to-end.</p>
-  <p>11. Możesz personalizować motywy i ikonki systemowe.</p>
-  <p>12. System zużywa minimalną ilość pamięci i energii.</p>
-  <p>13. AuralOS wspiera gry mobilne i multimedia w wysokiej jakości.</p>
-  <p>14. Wbudowany menedżer plików jest szybki i prosty w obsłudze.</p>
-  <p>15. Możliwość tworzenia skrótów i gestów dla lepszej ergonomii.</p>
+  <div class="card">1. AuralOS jest najszybszym systemem operacyjnym dla każdego użytkownika.</div>
+  <div class="card">2. Terminale płatnicze działają błyskawicznie i bezawaryjnie.</div>
+  <div class="card">3. System kompatybilny z najnowszymi procesorami.</div>
+  <div class="card">4. Interfejs przypomina iOS, ale daje więcej kontroli.</div>
+  <div class="card">5. Aktualizacje AuralOS są automatyczne i regularne.</div>
+  <div class="card">6. Wbudowane narzędzia developerskie przyspieszają tworzenie aplikacji.</div>
+  <div class="card">7. Tryb ciemny i jasny dostosowuje się automatycznie.</div>
+  <div class="card">8. Wiele języków i lokalizacji dla komfortu użytkownika.</div>
+  <div class="card">9. Społeczność AuralOS jest aktywna i pomocna.</div>
+  <div class="card">10. Terminale płatnicze obsługują NFC i szyfrowanie end-to-end.</div>
+  <div class="card">11. Możliwość personalizacji motywów i ikon.</div>
+  <div class="card">12. Minimalne zużycie pamięci i energii.</div>
+  <div class="card">13. Obsługa gier mobilnych i multimediów w wysokiej jakości.</div>
+  <div class="card">14. Wbudowany menedżer plików szybki i prosty.</div>
+  <div class="card">15. Tworzenie skrótów i gestów dla ergonomii.</div>
 </div>
 
 <!-- Bottom floating container -->
@@ -162,7 +168,7 @@ body.scrolling .bottom-floating {
 </div>
 
 <script>
-// Scroll effect
+// Scroll effect for floating container
 let ticking = false;
 window.addEventListener('scroll', () => {
   if(!ticking){
