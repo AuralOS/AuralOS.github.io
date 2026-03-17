@@ -7,91 +7,123 @@
 <style>
 body {
   margin: 0;
-  height: 100vh;
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
   background: radial-gradient(circle at top, #1f2937, #020617 70%);
-  overflow: hidden;
   color: white;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  height: 100vh;
+  position: relative;
 }
 
-/* Topbar liquid glass */
+/* Topbar */
 .topbar {
   position: fixed;
-  top: 25px;
-  left: 50%;
-  transform: translateX(-50%);
+  top: 0;
+  left: 0;
+  width: 100%;
   display: flex;
-  gap: 10px;
-  padding: 10px 14px;
-  border-radius: 22px;
-  background: rgba(255,255,255,0.06);
-  backdrop-filter: blur(35px) saturate(180%);
-  -webkit-backdrop-filter: blur(35px) saturate(180%);
-  border: 1px solid rgba(255,255,255,0.1);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 0 10px rgba(255,255,255,0.05);
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 20px;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  background: rgba(0,0,0,0.3);
+  z-index: 100;
 }
 
-/* Button Home */
-.btn {
-  padding: 9px 14px;
+/* Logo */
+.logo {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+/* Top buttons */
+.top-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.top-buttons .btn {
+  padding: 6px 12px;
   border-radius: 16px;
   border: none;
   background: rgba(255,255,255,0.08);
   color: white;
   cursor: pointer;
   transition: all 0.25s ease;
+  font-size: 14px;
 }
 
-.btn:hover {
+.top-buttons .btn:hover {
   background: rgba(255,255,255,0.18);
-  transform: scale(1.06);
+  transform: scale(1.05);
+}
+
+/* Content */
+.content {
+  margin-top: 70px;
+  padding: 20px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Bottom search container */
+.search-container {
+  position: fixed;
+  bottom: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 100;
 }
 
 /* Search input */
 .search {
   width: 260px;
-  padding: 10px 14px;
-  border-radius: 16px;
-  border: none;
+  height: 50px;
+  padding: 12px 16px;
+  border-radius: 25px;
+  border: 1px solid rgba(255,255,255,0.2);
   outline: none;
-  background: rgba(255,255,255,0.08);
+  font-size: 16px;
+  backdrop-filter: blur(15px) saturate(180%);
+  -webkit-backdrop-filter: blur(15px) saturate(180%);
+  background: rgba(255,255,255,0.06);
   color: white;
-  font-size: 14px;
   transition: all 0.25s ease;
 }
 
 .search:focus {
-  background: rgba(255,255,255,0.15);
-  box-shadow: 0 0 25px rgba(120,120,255,0.3);
-  transform: scale(1.02);
+  box-shadow: 0 0 25px rgba(120,120,255,0.4);
 }
 
-.search.typing {
-  box-shadow: 0 0 20px rgba(120,120,255,0.6);
-}
-
-/* Center text */
-.center {
-  position: absolute;
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-}
-
-.center h1 {
-  font-size: 50px;
-  font-weight: 600;
-  opacity: 0.85;
-  letter-spacing: 2px;
-  text-shadow: 0 0 20px rgba(255,255,255,0.1);
-  margin: 0;
-}
-
-.center p {
+/* Home button next to search */
+.home-btn {
+  padding: 0 14px;
+  border-radius: 22px;
+  border: none;
+  height: 50px;
+  background: rgba(255,255,255,0.08);
+  color: white;
   font-size: 16px;
-  opacity: 0.6;
-  margin-top: 8px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.home-btn:hover {
+  background: rgba(255,255,255,0.18);
+  transform: scale(1.05);
+}
+
+/* Floating effect on scroll */
+body.scrolling .search-container {
+  transform: translateX(-50%) translateY(-2px);
+  filter: blur(0.8px);
 }
 </style>
 </head>
@@ -99,23 +131,36 @@ body {
 
 <!-- Topbar -->
 <div class="topbar">
-  <button class="btn" onclick="goHome()">Home</button>
-  <input class="search" id="searchInput" placeholder="Szukaj..." 
-         onkeydown="handleSearch(event)" 
-         oninput="typingEffect()">
+  <div class="logo">Canoe Web</div>
 </div>
 
-<!-- Center text -->
-<div class="center">
-  <h1>Canoe Web</h1>
-  <p>by Aural</p>
+<!-- Main content -->
+<div class="content">
+  <p>Witamy w Canoe Web! Wpisz cokolwiek w dolnej wyszukiwarce, aby wyszukać w Google.</p>
+</div>
+
+<!-- Bottom search + home -->
+<div class="search-container">
+  <input class="search" id="searchInput" placeholder="Szukaj w Google..." onkeydown="handleSearch(event)">
+  <button class="home-btn" onclick="goHome()">Home</button>
 </div>
 
 <script>
-function goHome() {
-  window.location.href = "https://auralos.github.io";
-}
+// Floating scroll effect
+let ticking = false;
+window.addEventListener('scroll', () => {
+  if(!ticking){
+    document.body.classList.add('scrolling');
+    clearTimeout(window.scrollTimeout);
+    window.scrollTimeout = setTimeout(() => {
+      document.body.classList.remove('scrolling');
+    }, 100);
+    ticking = false;
+  }
+  ticking = true;
+});
 
+// Search handler
 function handleSearch(e) {
   if(e.key === "Enter") {
     const query = document.getElementById("searchInput").value.trim();
@@ -125,12 +170,9 @@ function handleSearch(e) {
   }
 }
 
-/* Typing animation */
-function typingEffect() {
-  const input = document.getElementById("searchInput");
-  input.classList.add("typing");
-  clearTimeout(input.timer);
-  input.timer = setTimeout(() => input.classList.remove("typing"), 400);
+// Home button
+function goHome() {
+  window.location.href = "https://auralos.github.io";
 }
 </script>
 
