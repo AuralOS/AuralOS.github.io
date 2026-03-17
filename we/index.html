@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>O AuralOS 🔥</title>
+  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/61/61457.png">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      min-height: 200vh;
+      background: linear-gradient(135deg, #1c1c1e 0%, #3a3a3c 100%);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow-x: hidden;
+    }
+
+    header {
+      width: 100%;
+      padding: 80px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 3em;
+      margin-bottom: 20px;
+      color: #0ff;
+    }
+
+    header p {
+      font-size: 1.2em;
+      color: #ccc;
+    }
+
+    section {
+      margin-top: 80px;
+      width: 90%;
+      max-width: 900px;
+      display: flex;
+      flex-direction: column;
+      gap: 50px;
+      padding-bottom: 150px;
+    }
+
+    .liquid-card {
+      position: relative;
+      background: rgba(255,255,255,0.1);
+      border-radius: 25px;
+      border: 1px solid rgba(255,255,255,0.3);
+      padding: 50px;
+      text-align: center;
+      color: #fff;
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .liquid-card h2 {
+      font-size: 2em;
+      margin-bottom: 20px;
+      color: #0ff;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+
+    .liquid-card p {
+      font-size: 1.1em;
+      line-height: 1.5;
+      color: #ddd;
+      text-shadow: 0 1px 5px rgba(0,0,0,0.2);
+    }
+
+    a.back {
+      margin-top: 40px;
+      display: inline-block;
+      color: #0ff;
+      text-decoration: underline;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>O AuralOS 🔥</h1>
+    <p>Poznaj nas i dowiedz się, czym jest AuralOS.</p>
+  </header>
+
+  <section>
+    <div class="liquid-card" id="card1">
+      <h2>Nasza Misja</h2>
+      <p>Tworzymy system operacyjny, który jest płynny, nowoczesny i przyjazny użytkownikowi. Każdy detal ma znaczenie.</p>
+    </div>
+
+    <div class="liquid-card" id="card2">
+      <h2>Dlaczego AuralOS?</h2>
+      <p>AuralOS łączy minimalistyczny design, responsywność i efekt liquid glass dla unikalnego doświadczenia wizualnego.</p>
+    </div>
+
+    <div class="liquid-card" id="card3">
+      <h2>Zespół</h2>
+      <p>Za projektem stoi zespół pasjonatów technologii, którzy dbają o każdy detal systemu i jego wygląd.</p>
+    </div>
+  </section>
+
+  <a href="../" class="back">← Powrót do strony głównej</a>
+
+  <script>
+    const cards = document.querySelectorAll('.liquid-card');
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      cards.forEach((card, i) => {
+        const offset = (i + 1) * 0.12;
+        card.style.transform = `translateY(${scrollY * offset}px)`;
+        card.style.boxShadow = `0 20px 40px rgba(0,255,255,${0.1 + i*0.05})`;
+      });
+    });
+  </script>
+
+</body>
+</html>
