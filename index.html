@@ -3,58 +3,62 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AuralOS</title>
-
+<title>AuralOS - Strona główna</title>
 <style>
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
   background: radial-gradient(circle at top, #1f2937, #020617 70%);
   color: white;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 
-/* ===== TOPBAR ===== */
+/* Topbar */
 .topbar {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 14px 18px;
-  backdrop-filter: blur(18px);
-  background: rgba(0,0,0,0.35);
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-  z-index: 999;
+  justify-content: space-between;
+  padding: 15px 20px;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  background: rgba(0,0,0,0.3);
+  z-index: 100;
 }
 
 .logo {
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 600;
 }
 
+/* Top buttons */
 .top-buttons {
   display: flex;
-  gap: 8px;
+  gap: 10px;
 }
 
-.btn {
-  padding: 5px 12px;
-  border-radius: 14px;
+.top-buttons .btn {
+  padding: 6px 12px;
+  border-radius: 16px;
   border: none;
   background: rgba(255,255,255,0.08);
   color: white;
   cursor: pointer;
-  font-size: 13px;
-  backdrop-filter: blur(10px);
+  transition: all 0.25s ease;
+  font-size: 14px;
 }
 
-.btn:hover {
+.top-buttons .btn:hover {
   background: rgba(255,255,255,0.18);
+  transform: scale(1.05);
 }
 
-/* ===== CONTENT ===== */
+/* Main content */
 .content {
   margin-top: 70px;
   padding: 20px;
@@ -63,130 +67,143 @@ body {
   margin-right: auto;
 }
 
-.card {
-  background: rgba(255,255,255,0.05);
-  padding: 16px 18px;
-  margin-bottom: 14px;
-  border-radius: 18px;
-  backdrop-filter: blur(15px);
-  box-shadow: inset 0 0 20px rgba(0,0,0,0.3);
-}
-
-/* ===== FLOATING BAR ===== */
-.bottom-floating {
-  position: fixed; /* 🔥 KLUCZOWE */
-  bottom: 20px;
+/* Floating bottom container: Canoe Web left, Search right */
+.bottom-container {
+  position: fixed;
+  bottom: 25px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  gap: 10px;
-  width: calc(100% - 40px);
-  max-width: 500px;
-  z-index: 999;
-  transition: all 0.2s ease;
+  gap: 12px;
+  z-index: 100;
 }
 
+/* Canoe Web button */
 .canoe-btn {
-  height: 45px;
-  padding: 0 16px;
-  border-radius: 22px;
-  border: none;
-  background: rgba(255,255,255,0.08);
+  width: 120px;
+  height: 50px;
+  font-size: 16px;
+  border-radius: 25px;
+  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
   color: white;
-  font-size: 14px;
   cursor: pointer;
-  backdrop-filter: blur(20px);
+  transition: all 0.25s ease;
+  text-shadow: 0 0 5px rgba(255,255,255,0.3);
 }
 
 .canoe-btn:hover {
-  background: rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.15);
+  transform: scale(1.05);
 }
 
+/* Search input */
 .search {
-  flex: 1;
-  height: 45px;
-  border-radius: 22px;
-  border: 1px solid rgba(255,255,255,0.2);
-  padding: 0 15px;
-  font-size: 15px;
+  width: 180px;
+  height: 50px;
+  padding: 12px 16px;
+  border-radius: 25px;
+  border: 1px solid rgba(255,255,255,0.1);
+  outline: none;
+  font-size: 16px;
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
   background: rgba(255,255,255,0.06);
   color: white;
-  outline: none;
+  transition: all 0.25s ease;
 }
 
-/* scroll vibe */
-body.scrolling .bottom-floating {
-  transform: translateX(-50%) translateY(-3px);
-  filter: blur(0.5px);
+.search:focus {
+  box-shadow: 0 0 25px rgba(120,120,255,0.4);
+}
+
+/* iOS 26 blur letters effect */
+.canoe-btn span,
+.search {
+  display: inline-block;
+  transition: transform 0.25s ease, filter 0.25s ease;
+}
+
+body.scrolling .canoe-btn span,
+body.scrolling .search {
+  filter: blur(1.2px);
+  transform: translateY(-1px);
 }
 </style>
 </head>
-
 <body>
 
-<!-- TOPBAR -->
+<!-- Topbar -->
 <div class="topbar">
   <div class="logo">AuralOS</div>
   <div class="top-buttons">
-    <button class="btn" onclick="window.location.href='https://auralos.github.io/we'">O Nas</button>
+    <button class="btn" onclick="window.location.href='https://auralos.github.io/we'">O nas</button>
     <button class="btn" onclick="window.location.href='https://t.me/Auralinfo'">Telegram</button>
   </div>
 </div>
 
-<!-- CONTENT -->
+<!-- Main content -->
 <div class="content">
-  <div class="card">AuralOS jest szybki i nowoczesny.</div>
-  <div class="card">System inspirowany iOS ale bardziej otwarty.</div>
-  <div class="card">Minimalne zużycie baterii.</div>
-  <div class="card">Świetna wydajność na słabszych urządzeniach.</div>
-  <div class="card">Regularne aktualizacje.</div>
-  <div class="card">Bezpieczne płatności NFC.</div>
-  <div class="card">Nowoczesny design.</div>
-  <div class="card">Obsługa wielu języków.</div>
-  <div class="card">Intuicyjna obsługa.</div>
-  <div class="card">Personalizacja motywów.</div>
-  <div class="card">Wsparcie dla aplikacji mobilnych.</div>
-  <div class="card">Szybki menedżer plików.</div>
-  <div class="card">Stabilność systemu.</div>
-  <div class="card">Lekki i szybki UI.</div>
-  <div class="card">Idealny dla każdego użytkownika.</div>
+  <p>Witamy w AuralOS — najlepszym systemie operacyjnym dla każdego użytkownika!</p>
+  <p>Przewiń stronę, a wyszukiwarka z przyciskiem Canoe Web zawsze będzie widoczna na dole.</p>
+  <p>AuralOS działa super płynnie, szybciej niż każdy Android.</p>
+  <p>Interfejs inspirowany iOS 26 daje niesamowity vibe.</p>
+  <p>Terminale płatnicze, bezpieczeństwo i super narzędzia dla developerów.</p>
+  <p>Wszystko zoptymalizowane pod nowoczesne procesory.</p>
+  <p>Wsparcie dla wielu języków i tryb ciemny/jasny automatyczny.</p>
+  <p>Społeczność aktywna i wsparcie techniczne gotowe do pomocy.</p>
 </div>
 
-<!-- FLOATING BAR -->
-<div class="bottom-floating">
-  <button class="canoe-btn" onclick="window.location.href='https://auralos.github.io/canoe'">Canoe Web</button>
-  <input class="search" id="searchInput" placeholder="Szukaj..." onkeydown="search(event)">
+<!-- Bottom search + Canoe Web button -->
+<div class="bottom-container">
+  <button class="canoe-btn" onclick="goCanoe()"><span>Canoe Web</span></button>
+  <input class="search" id="searchInput" placeholder="Szukaj..." onkeydown="handleSearch(event)">
 </div>
 
 <script>
-// scroll effect
-let timer;
+// Scroll blur effect
+let ticking = false;
 window.addEventListener('scroll', () => {
-  document.body.classList.add('scrolling');
-  clearTimeout(timer);
-  timer = setTimeout(() => {
-    document.body.classList.remove('scrolling');
-  }, 120);
+  if(!ticking){
+    document.body.classList.add('scrolling');
+    clearTimeout(window.scrollTimeout);
+    window.scrollTimeout = setTimeout(() => {
+      document.body.classList.remove('scrolling');
+    }, 100);
+    ticking = false;
+  }
+  ticking = true;
 });
 
-// search
-function search(e){
-  if(e.key === "Enter"){
-    let q = e.target.value.toLowerCase();
+// Search bar logic with redirect map
+function handleSearch(e) {
+  if(e.key === "Enter") {
+    const query = document.getElementById("searchInput").value.trim().toLowerCase();
+    if(!query) return;
 
-    let map = {
-      youtube: "https://youtube.com",
-      spotify: "https://spotify.com",
-      google: "https://google.com",
-      telegram: "https://telegram.org"
+    const redirects = {
+      'youtube': 'https://www.youtube.com',
+      'chatgpt': 'https://chat.openai.com',
+      'telegram': 'https://telegram.org',
+      'spotify': 'https://www.spotify.com',
+      'facebook': 'https://www.facebook.com',
+      'google': 'https://www.google.com',
+      'canoe': 'https://auralos.github.io/canoe'
     };
 
-    if(map[q]){
-      window.location.href = map[q];
+    if(redirects[query]) {
+      window.location.href = redirects[query];
     } else {
-      window.location.href = "https://google.com/search?q=" + q;
+      window.location.href = "https://www.google.com/search?q=" + encodeURIComponent(query);
     }
   }
+}
+
+// Canoe Web button
+function goCanoe() {
+  window.location.href = "https://auralos.github.io/canoe";
 }
 </script>
 
