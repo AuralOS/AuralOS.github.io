@@ -22,7 +22,7 @@ body {
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start; /* przyciski bardziej w lewo */
   padding: 15px 20px;
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
@@ -34,13 +34,13 @@ body {
 .logo {
   font-size: 22px;
   font-weight: 600;
+  margin-right: 30px; /* odstęp między logo a przyciskami */
 }
 
-/* Top buttons - jeszcze bliżej logo */
+/* Top buttons - bliżej środka paska */
 .top-buttons {
   display: flex;
   gap: 10px;
-  margin-left: 10px; /* przesunięte bardziej w lewo */
 }
 
 .top-buttons .btn {
