@@ -1,4 +1,4 @@
-      <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pl">
 <head>
 <meta charset="UTF-8">
@@ -67,7 +67,21 @@ body {
   margin-right: auto;
 }
 
-/* Floating bottom container: Canoe Web left, Search right */
+/* Info box styling */
+.info-box {
+  font-size: 18px;
+  line-height: 1.7;
+  margin-bottom: 20px;
+  padding: 12px 16px;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.03);
+  backdrop-filter: blur(20px) saturate(150%);
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3) inset;
+  opacity: 0.85;
+}
+
+/* Bottom search + Canoe Web container */
 .bottom-container {
   position: fixed;
   bottom: 25px;
@@ -146,14 +160,21 @@ body.scrolling .search {
 
 <!-- Main content -->
 <div class="content">
-  <p>Witamy w AuralOS — najlepszym systemie operacyjnym dla każdego użytkownika!</p>
-  <p>Przewiń stronę, a wyszukiwarka z przyciskiem Canoe Web zawsze będzie widoczna na dole.</p>
-  <p>AuralOS działa super płynnie, szybciej niż każdy Android.</p>
-  <p>Interfejs inspirowany iOS 26 daje niesamowity vibe.</p>
-  <p>Terminale płatnicze, bezpieczeństwo i super narzędzia dla developerów.</p>
-  <p>Wszystko zoptymalizowane pod nowoczesne procesory.</p>
-  <p>Wsparcie dla wielu języków i tryb ciemny/jasny automatyczny.</p>
-  <p>Społeczność aktywna i wsparcie techniczne gotowe do pomocy.</p>
+  <div class="info-box">1. AuralOS to system, który bije każdy Android pod względem szybkości i stabilności.</div>
+  <div class="info-box">2. Nasze terminale płatnicze działają płynnie i bezpiecznie, wspierając nowoczesne technologie płatności.</div>
+  <div class="info-box">3. System jest zoptymalizowany pod najnowsze procesory, dając najlepszą wydajność w swojej klasie.</div>
+  <div class="info-box">4. Intuicyjny interfejs sprawia, że każdy użytkownik poczuje się jak w iOS, ale z większą kontrolą.</div>
+  <div class="info-box">5. Aktualizacje AuralOS są regularne i automatyczne, zapewniając bezpieczeństwo i nowe funkcje.</div>
+  <div class="info-box">6. Oferujemy wbudowane narzędzia dla developerów, aby tworzenie aplikacji było proste i szybkie.</div>
+  <div class="info-box">7. System ma super terminale płatnicze z NFC i szyfrowaniem end-to-end.</div>
+  <div class="info-box">8. Tryb ciemny i jasny automatycznie dostosowuje się do warunków oświetlenia.</div>
+  <div class="info-box">9. AuralOS wspiera wiele języków i lokalizacji, by każdy użytkownik czuł się komfortowo.</div>
+  <div class="info-box">10. Nasza społeczność jest aktywna, a wsparcie techniczne zawsze gotowe do pomocy.</div>
+  <div class="info-box">11. Przewiń stronę, aby zobaczyć efekt blur na przycisku i wyszukiwarce.</div>
+  <div class="info-box">12. Wyszukiwarka działa z redirectami jak w Google.</div>
+  <div class="info-box">13. Możesz wpisywać frazy typu "Spotify", "YouTube", "ChatGPT".</div>
+  <div class="info-box">14. Klikając Canoe Web, przenosisz się na stronę główną Canoe.</div>
+  <div class="info-box">15. Efekt liquid glass i blur daje vibe iOS 26.</div>
 </div>
 
 <!-- Bottom search + Canoe Web button -->
