@@ -4,16 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AuralOS</title>
+
 <style>
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
   background: radial-gradient(circle at top, #1f2937, #020617 70%);
   color: white;
-  overflow-x: hidden;
 }
 
-/* Topbar */
+/* ===== TOPBAR ===== */
 .topbar {
   position: fixed;
   top: 0;
@@ -22,16 +22,15 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 20px;
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  border-bottom: 1px solid rgba(255,255,255,0.1);
-  background: rgba(0,0,0,0.3);
-  z-index: 100;
+  padding: 14px 18px;
+  backdrop-filter: blur(18px);
+  background: rgba(0,0,0,0.35);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  z-index: 999;
 }
 
 .logo {
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 600;
 }
 
@@ -40,23 +39,22 @@ body {
   gap: 8px;
 }
 
-.top-buttons .btn {
-  padding: 4px 10px;
+.btn {
+  padding: 5px 12px;
   border-radius: 14px;
   border: none;
   background: rgba(255,255,255,0.08);
   color: white;
   cursor: pointer;
-  transition: all 0.25s ease;
   font-size: 13px;
+  backdrop-filter: blur(10px);
 }
 
-.top-buttons .btn:hover {
+.btn:hover {
   background: rgba(255,255,255,0.18);
-  transform: scale(1.05);
 }
 
-/* Main content */
+/* ===== CONTENT ===== */
 .content {
   margin-top: 70px;
   padding: 20px;
@@ -67,24 +65,25 @@ body {
 
 .card {
   background: rgba(255,255,255,0.05);
-  padding: 15px 20px;
-  margin-bottom: 15px;
+  padding: 16px 18px;
+  margin-bottom: 14px;
   border-radius: 18px;
-  backdrop-filter: blur(15px) saturate(180%);
-  -webkit-backdrop-filter: blur(15px) saturate(180%);
-  box-shadow: 0 5px 15px rgba(0,0,0,0.3) inset;
+  backdrop-filter: blur(15px);
+  box-shadow: inset 0 0 20px rgba(0,0,0,0.3);
 }
 
-/* Bottom floating container (button + search) */
+/* ===== FLOATING BAR ===== */
 .bottom-floating {
-  position: absolute; /* pozwala na przesuwanie przy scrollu */
+  position: fixed; /* 🔥 KLUCZOWE */
+  bottom: 20px;
   left: 50%;
-  bottom: 25px;
   transform: translateX(-50%);
   display: flex;
   gap: 10px;
-  z-index: 100;
-  transition: transform 0.15s ease, filter 0.15s ease;
+  width: calc(100% - 40px);
+  max-width: 500px;
+  z-index: 999;
+  transition: all 0.2s ease;
 }
 
 .canoe-btn {
@@ -94,46 +93,38 @@ body {
   border: none;
   background: rgba(255,255,255,0.08);
   color: white;
-  font-size: 15px;
-  font-weight: 500;
+  font-size: 14px;
   cursor: pointer;
   backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  transition: all 0.25s ease;
 }
 
 .canoe-btn:hover {
-  background: rgba(255,255,255,0.18);
-  transform: scale(1.05);
+  background: rgba(255,255,255,0.2);
 }
 
 .search {
   flex: 1;
   height: 45px;
-  padding: 12px 16px;
   border-radius: 22px;
   border: 1px solid rgba(255,255,255,0.2);
-  outline: none;
-  font-size: 16px;
+  padding: 0 15px;
+  font-size: 15px;
   background: rgba(255,255,255,0.06);
   color: white;
-  transition: all 0.25s ease;
+  outline: none;
 }
 
-.search:focus {
-  box-shadow: 0 0 25px rgba(120,120,255,0.4);
-}
-
-/* Scroll effect for floating container */
+/* scroll vibe */
 body.scrolling .bottom-floating {
-  transform: translateX(-50%) translateY(-2px);
-  filter: blur(0.8px);
+  transform: translateX(-50%) translateY(-3px);
+  filter: blur(0.5px);
 }
 </style>
 </head>
+
 <body>
 
-<!-- Topbar -->
+<!-- TOPBAR -->
 <div class="topbar">
   <div class="logo">AuralOS</div>
   <div class="top-buttons">
@@ -142,66 +133,58 @@ body.scrolling .bottom-floating {
   </div>
 </div>
 
-<!-- Main content -->
+<!-- CONTENT -->
 <div class="content">
-  <div class="card">1. AuralOS jest najszybszym systemem operacyjnym dla każdego użytkownika.</div>
-  <div class="card">2. Terminale płatnicze działają błyskawicznie i bezawaryjnie.</div>
-  <div class="card">3. System kompatybilny z najnowszymi procesorami.</div>
-  <div class="card">4. Interfejs przypomina iOS, ale daje więcej kontroli.</div>
-  <div class="card">5. Aktualizacje AuralOS są automatyczne i regularne.</div>
-  <div class="card">6. Wbudowane narzędzia developerskie przyspieszają tworzenie aplikacji.</div>
-  <div class="card">7. Tryb ciemny i jasny dostosowuje się automatycznie.</div>
-  <div class="card">8. Wiele języków i lokalizacji dla komfortu użytkownika.</div>
-  <div class="card">9. Społeczność AuralOS jest aktywna i pomocna.</div>
-  <div class="card">10. Terminale płatnicze obsługują NFC i szyfrowanie end-to-end.</div>
-  <div class="card">11. Możliwość personalizacji motywów i ikon.</div>
-  <div class="card">12. Minimalne zużycie pamięci i energii.</div>
-  <div class="card">13. Obsługa gier mobilnych i multimediów w wysokiej jakości.</div>
-  <div class="card">14. Wbudowany menedżer plików szybki i prosty.</div>
-  <div class="card">15. Tworzenie skrótów i gestów dla ergonomii.</div>
+  <div class="card">AuralOS jest szybki i nowoczesny.</div>
+  <div class="card">System inspirowany iOS ale bardziej otwarty.</div>
+  <div class="card">Minimalne zużycie baterii.</div>
+  <div class="card">Świetna wydajność na słabszych urządzeniach.</div>
+  <div class="card">Regularne aktualizacje.</div>
+  <div class="card">Bezpieczne płatności NFC.</div>
+  <div class="card">Nowoczesny design.</div>
+  <div class="card">Obsługa wielu języków.</div>
+  <div class="card">Intuicyjna obsługa.</div>
+  <div class="card">Personalizacja motywów.</div>
+  <div class="card">Wsparcie dla aplikacji mobilnych.</div>
+  <div class="card">Szybki menedżer plików.</div>
+  <div class="card">Stabilność systemu.</div>
+  <div class="card">Lekki i szybki UI.</div>
+  <div class="card">Idealny dla każdego użytkownika.</div>
 </div>
 
-<!-- Bottom floating container -->
+<!-- FLOATING BAR -->
 <div class="bottom-floating">
   <button class="canoe-btn" onclick="window.location.href='https://auralos.github.io/canoe'">Canoe Web</button>
-  <input class="search" id="searchInput" placeholder="Szukaj..." onkeydown="handleSearch(event)">
+  <input class="search" id="searchInput" placeholder="Szukaj..." onkeydown="search(event)">
 </div>
 
 <script>
-// Scroll effect for floating container
-let ticking = false;
+// scroll effect
+let timer;
 window.addEventListener('scroll', () => {
-  if(!ticking){
-    document.body.classList.add('scrolling');
-    clearTimeout(window.scrollTimeout);
-    window.scrollTimeout = setTimeout(() => {
-      document.body.classList.remove('scrolling');
-    }, 100);
-    ticking = false;
-  }
-  ticking = true;
+  document.body.classList.add('scrolling');
+  clearTimeout(timer);
+  timer = setTimeout(() => {
+    document.body.classList.remove('scrolling');
+  }, 120);
 });
 
-// Search logic
-function handleSearch(e) {
-  if(e.key === "Enter") {
-    const query = document.getElementById("searchInput").value.trim().toLowerCase();
-    if(!query) return;
+// search
+function search(e){
+  if(e.key === "Enter"){
+    let q = e.target.value.toLowerCase();
 
-    const redirects = {
-      'youtube': 'https://www.youtube.com',
-      'chatgpt': 'https://chat.openai.com',
-      'telegram': 'https://telegram.org',
-      'spotify': 'https://www.spotify.com',
-      'facebook': 'https://www.facebook.com',
-      'google': 'https://www.google.com',
-      'canoe': 'https://auralos.github.io/canoe'
+    let map = {
+      youtube: "https://youtube.com",
+      spotify: "https://spotify.com",
+      google: "https://google.com",
+      telegram: "https://telegram.org"
     };
 
-    if(redirects[query]) {
-      window.location.href = redirects[query];
+    if(map[q]){
+      window.location.href = map[q];
     } else {
-      window.location.href = "https://www.google.com/search?q=" + encodeURIComponent(query);
+      window.location.href = "https://google.com/search?q=" + q;
     }
   }
 }
