@@ -12,8 +12,6 @@ body {
   color: white;
   overflow-x: hidden;
   overflow-y: scroll;
-  height: 100vh;
-  position: relative;
 }
 
 /* Topbar */
@@ -24,7 +22,6 @@ body {
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
   padding: 15px 20px;
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
@@ -33,41 +30,32 @@ body {
   z-index: 100;
 }
 
-/* Logo */
 .logo {
   font-size: 22px;
   font-weight: 600;
 }
 
-/* Top buttons */
-.top-buttons {
-  display: flex;
-  gap: 10px;
-}
-
-.top-buttons .btn {
-  padding: 6px 12px;
-  border-radius: 16px;
-  border: none;
-  background: rgba(255,255,255,0.08);
-  color: white;
-  cursor: pointer;
-  transition: all 0.25s ease;
-  font-size: 14px;
-}
-
-.top-buttons .btn:hover {
-  background: rgba(255,255,255,0.18);
-  transform: scale(1.05);
-}
-
-/* Content */
+/* Main content */
 .content {
   margin-top: 70px;
   padding: 20px;
   max-width: 700px;
   margin-left: auto;
   margin-right: auto;
+}
+
+/* Info box styling */
+.info-box {
+  font-size: 18px;
+  line-height: 1.7;
+  margin-bottom: 20px;
+  padding: 12px 16px;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.03);
+  backdrop-filter: blur(20px) saturate(150%);
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3) inset;
+  opacity: 0.85;
 }
 
 /* Bottom search container */
@@ -78,7 +66,7 @@ body {
   transform: translateX(-50%);
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   z-index: 100;
 }
 
@@ -88,11 +76,11 @@ body {
   height: 50px;
   padding: 12px 16px;
   border-radius: 25px;
-  border: 1px solid rgba(255,255,255,0.2);
+  border: 1px solid rgba(255,255,255,0.1);
   outline: none;
   font-size: 16px;
-  backdrop-filter: blur(15px) saturate(180%);
-  -webkit-backdrop-filter: blur(15px) saturate(180%);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
   background: rgba(255,255,255,0.06);
   color: white;
   transition: all 0.25s ease;
@@ -102,7 +90,7 @@ body {
   box-shadow: 0 0 25px rgba(120,120,255,0.4);
 }
 
-/* Home button next to search */
+/* Home button */
 .home-btn {
   padding: 0 14px;
   border-radius: 22px;
@@ -120,10 +108,17 @@ body {
   transform: scale(1.05);
 }
 
-/* Floating effect on scroll */
-body.scrolling .search-container {
-  transform: translateX(-50%) translateY(-2px);
-  filter: blur(0.8px);
+/* iOS 26 blur letters effect */
+.search,
+.home-btn {
+  display: inline-block;
+  transition: transform 0.25s ease, filter 0.25s ease;
+}
+
+body.scrolling .search,
+body.scrolling .home-btn {
+  filter: blur(1.2px);
+  transform: translateY(-1px);
 }
 </style>
 </head>
@@ -136,7 +131,16 @@ body.scrolling .search-container {
 
 <!-- Main content -->
 <div class="content">
-  <p>Witamy w Canoe Web! Wpisz cokolwiek w dolnej wyszukiwarce, aby wyszukać w Google.</p>
+  <div class="info-box">1. Canoe Web to szybka i lekka przeglądarka online z nowoczesnym designem.</div>
+  <div class="info-box">2. Wbudowana wyszukiwarka działa w stylu iOS 26 z efektem liquid glass.</div>
+  <div class="info-box">3. Wszystkie wpisy w wyszukiwarce automatycznie kierują do Google.</div>
+  <div class="info-box">4. Canoe Web jest zoptymalizowane pod telefony i tablety – działa płynnie.</div>
+  <div class="info-box">5. Dolny pasek wyszukiwania jest zawsze widoczny, niezależnie od przewijania.</div>
+  <div class="info-box">6. Home button przenosi Cię na stronę główną AuralOS w każdym momencie.</div>
+  <div class="info-box">7. Każda informacja w Canoe Web wyświetlana jest w osobnej ramce dla lepszej czytelności.</div>
+  <div class="info-box">8. Wspiera tryb ciemny, który automatycznie dopasowuje kolory do reszty interfejsu.</div>
+  <div class="info-box">9. Canoe Web ma minimalistyczny topbar – tylko logo po lewej, bez przycisków.</div>
+  <div class="info-box">10. Dzięki efektom blur i saturate każdy element wygląda jak z iOS 26.</div>
 </div>
 
 <!-- Bottom search + home -->
@@ -146,7 +150,7 @@ body.scrolling .search-container {
 </div>
 
 <script>
-// Floating scroll effect
+// Scroll blur effect
 let ticking = false;
 window.addEventListener('scroll', () => {
   if(!ticking){
